@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+:root {
+  --kraft-50: #f5e9cd;
+  --kraft-100: #eddcae;
+  --kraft-200: #dfc386;
+  --kraft-300: #cba766;
+
+  --char-900: #241a12;
+  --char-700: #3c2c1d;
+  --char-500: #5c4630;
+  --char-300: #8a7156;
+
+  --ember-500: #c73a1f;
+  --ember-600: #9c2e18;
+  --ember-700: #7a2412;
+
+  --mustard-400: #e0a531;
+  --mustard-600: #b6801f;
+
+  --pine-600: #3e5c3f;
+  --pine-700: #2f4830;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-kraft-50: var(--kraft-50);
+  --color-kraft-100: var(--kraft-100);
+  --color-kraft-200: var(--kraft-200);
+  --color-kraft-300: var(--kraft-300);
+
+  --color-char-900: var(--char-900);
+  --color-char-700: var(--char-700);
+  --color-char-500: var(--char-500);
+  --color-char-300: var(--char-300);
+
+  --color-ember-500: var(--ember-500);
+  --color-ember-600: var(--ember-600);
+  --color-ember-700: var(--ember-700);
+
+  --color-mustard-400: var(--mustard-400);
+  --color-mustard-600: var(--mustard-600);
+
+  --color-pine-600: var(--pine-600);
+  --color-pine-700: var(--pine-700);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  border-color: var(--char-300);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--kraft-50);
+  color: var(--char-900);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "tnum" 1;
+}
+
+::selection {
+  background: var(--ember-500);
+  color: var(--kraft-50);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--kraft-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--char-300);
+  border: 3px solid var(--kraft-100);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ember-600);
+}
+html {
+  scrollbar-color: var(--char-300) var(--kraft-100);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ember-600);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---------------------------------------------------------------- */
+/* Kraft paper: the base material every card and panel is cut from.  */
+/* ---------------------------------------------------------------- */
+
+.paper {
+  position: relative;
+  background: var(--kraft-200);
+  border-radius: 10px;
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.3) inset, 0 10px 26px -14px rgb(36 26 18 / 0.4);
+}
+
+.grain-kraft {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  filter: url(#kraft-grain);
+  mix-blend-mode: multiply;
+  opacity: 0.16;
+}
+
+/* Torn-paper edge divider between sections */
+.torn-edge {
+  display: block;
+  width: 100%;
+  height: 26px;
+  color: var(--kraft-50);
+}
+.torn-edge-dark {
+  color: var(--char-900);
+}
+
+/* Small tracked-out label */
+.label-caps {
+  font-family: var(--font-body), ui-sans-serif, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ember-600);
+}
+
+/* Stamped oval tag, e.g. spice level / index */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: var(--font-body), ui-sans-serif, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kraft-50);
+  background: var(--pine-600);
+  border: 2px solid var(--char-900);
+  padding: 0.25em 0.65em;
+  border-radius: 999px;
+}
+
+/* Sparing gingham accent stripe, per OWN-WORLD — used once under a
+   heading, never as a background wash. */
+.gingham-strip {
+  display: block;
+  width: 56px;
+  height: 10px;
+  border-radius: 3px;
+  background-color: var(--kraft-50);
+  background-image:
+    linear-gradient(45deg, var(--pine-600) 25%, transparent 25%, transparent 75%, var(--pine-600) 75%),
+    linear-gradient(45deg, var(--pine-600) 25%, transparent 25%, transparent 75%, var(--pine-600) 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+  border: 1px solid var(--char-900);
+}
+
+/* Ember CTA: a chunky pressable diner button */
+.cta-ember {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-display), ui-sans-serif, sans-serif;
+  font-size: 1rem;
+  color: var(--kraft-50);
+  background: var(--ember-500);
+  border: 2px solid var(--char-900);
+  border-radius: 10px;
+  padding: 0.75em 1.6em;
+  box-shadow: 0 6px 14px -6px rgb(36 26 18 / 0.55), 0 2px 4px rgb(36 26 18 / 0.3);
+  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+.cta-ember:hover {
+  background: var(--ember-600);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -8px rgb(36 26 18 / 0.6), 0 3px 6px rgb(36 26 18 / 0.35);
+}
+.cta-ember:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px -2px rgb(36 26 18 / 0.5);
+}
+
+.link-quiet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--char-700);
+  font-weight: 700;
+  border-bottom: 2px solid var(--char-300);
+  padding-bottom: 0.1em;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+.link-quiet:hover {
+  color: var(--ember-600);
+  border-color: var(--ember-500);
+}
+
+/* ---------------------------------------------------------------- */
+/* Scroll reveal: a simple settle, motion stays out of the way of    */
+/* the illustrations, which carry the signature motion instead.      */
+/* ---------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 520ms var(--ease-out), transform 520ms var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger > * {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 460ms var(--ease-out), transform 460ms var(--ease-out);
+}
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 110ms; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 220ms; }
+.stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Line illustrations draw themselves on as they enter — the one     */
+/* signature interaction, tied specifically to the authored artwork. */
+.draw-in path,
+.draw-in line,
+.draw-in polyline {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  transition: stroke-dashoffset 1500ms var(--ease-out);
+}
+.is-visible .draw-in path,
+.is-visible .draw-in line,
+.is-visible .draw-in polyline,
+.draw-in.is-visible path,
+.draw-in.is-visible line,
+.draw-in.is-visible polyline {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .stagger > *,
+  .cta-ember,
+  .draw-in path,
+  .draw-in line,
+  .draw-in polyline {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+  .reveal,
+  .stagger > * {
+    opacity: 1;
+    transform: none;
+  }
+  .draw-in path,
+  .draw-in line,
+  .draw-in polyline {
+    stroke-dashoffset: 0;
+  }
+}
